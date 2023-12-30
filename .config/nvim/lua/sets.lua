@@ -25,3 +25,4 @@ vim.opt.colorcolumn = '80'
 vim.opt.wrap = false
 vim.opt.updatetime = 300
 vim.opt.signcolumn = 'yes'
+vim.opt.autoread = true
