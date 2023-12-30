@@ -89,7 +89,6 @@ return packer.startup(function(use)
 
     -- python formatters
     use 'nvie/vim-flake8'
-    use 'psf/black'
 
     -- js support and dependencies
     use 'othree/html5.vim'
@@ -97,6 +96,7 @@ return packer.startup(function(use)
     use 'evanleck/vim-svelte'
     use 'HerringtonDarkholme/yats.vim'
     use 'maxmellon/vim-jsx-pretty'
+    use 'leafOfTree/vim-svelte-plugin'
 
     -- tags support
     use 'leafOfTree/vim-matchtag'
@@ -141,32 +141,13 @@ return packer.startup(function(use)
 
     -- haskell tools
     use 'mrcjkb/haskell-tools.nvim'
-    use 'alx741/vim-hindent'
+    use 'alx741/vim-stylishask'
 
     -- better splits
     use 'mrjones2014/smart-splits.nvim'
 
     -- rust support
     use 'simrat39/rust-tools.nvim'
-
-    -- cursor highlight
-    use {
-        'yamatsum/nvim-cursorline',
-        config = function()
-            require('nvim-cursorline').setup {
-                cursorline = {
-                    enable = true,
-                    timeout = 1000,
-                    number = false,
-                },
-                cursorword = {
-                    enable = true,
-                    min_length = 3,
-                    hl = { underline = true },
-                }
-            }
-        end
-    }
 
     -- lsp progress
     use { 
@@ -181,6 +162,9 @@ return packer.startup(function(use)
             }
         end
     }
+
+    -- wakatime
+    use 'wakatime/vim-wakatime'
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
