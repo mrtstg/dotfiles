@@ -166,6 +166,46 @@ return packer.startup(function(use)
     -- wakatime
     use 'wakatime/vim-wakatime'
 
+    -- keys helper
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+            }
+        end
+    }
+
+    -- better notifications
+    use 'rcarriga/nvim-notify'
+
+    use {
+        'nvimdev/lspsaga.nvim',
+        after = 'nvim-lspconfig',
+        config = function()
+            require('lspsaga').setup({})
+        end
+    }
+
+    use {
+        'sunjon/shade.nvim',
+        config = function()
+            require'shade'.setup({
+                overlay_opacity = 75,
+                opacity_step = 1,
+                keys = {
+                    --brightness_up    = '<C-Up>',
+                    --brightness_down  = '<C-Down>',
+                    toggle           = '<Leader>s',
+                }
+            })
+        end
+    }
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
