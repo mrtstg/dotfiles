@@ -1,4 +1,5 @@
 black_on_save_group = vim.api.nvim_create_augroup("black_on_save_group", { clear = true })
+haskell_indent_group = vim.api.nvim_create_augroup("haskell_indent_group", {})
 
 local function launch_black()
     vim.api.nvim_command ':!black --quiet %'
@@ -10,6 +11,14 @@ vim.api.nvim_create_autocmd(
         pattern = '*.py',
         callback = launch_black,
         group = black_on_save_group
+    }
+)
+
+vim.api.nvim_create_autocmd(
+    { "BufEnter", "BufWinEnter" },
+    {
+        pattern = '*.hs',
+        command = "setlocal ts=2 sw=2"
     }
 )
 
