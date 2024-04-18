@@ -61,7 +61,6 @@ return packer.startup(function(use)
     use { 'hrsh7th/nvim-cmp', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip', 'hrsh7th/cmp-path', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-nvim-lsp-signature-help', 'ray-x/lsp_signature.nvim' }
     
     -- add tabs and icons for it
-    use 'lewis6991/gitsigns.nvim'
     use { 'romgrk/barbar.nvim', requires = { 'nvim-tree/nvim-web-devicons' }}
     use 'nvim-tree/nvim-web-devicons'
     
@@ -166,20 +165,6 @@ return packer.startup(function(use)
     -- wakatime
     use 'wakatime/vim-wakatime'
 
-    -- keys helper
-    use {
-        "folke/which-key.nvim",
-        config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require("which-key").setup {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-            }
-        end
-    }
-
     -- better notifications
     use 'rcarriga/nvim-notify'
 
@@ -195,7 +180,7 @@ return packer.startup(function(use)
         'sunjon/shade.nvim',
         config = function()
             require'shade'.setup({
-                overlay_opacity = 75,
+                overlay_opacity = 90,
                 opacity_step = 1,
                 keys = {
                     --brightness_up    = '<C-Up>',
@@ -203,6 +188,13 @@ return packer.startup(function(use)
                     toggle           = '<Leader>s',
                 }
             })
+        end
+    }
+
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
         end
     }
 
