@@ -34,6 +34,17 @@ require('lspconfig')['pyright'].setup{
     on_attach=on_attach,
 }
 
+require('lspconfig')['yamlls'].setup {
+    on_attach=on_attach,
+    settings = {
+        yaml = {
+            schemas = { 
+                Kubernetes = '/*-k8s.yml'
+            }
+        }
+    }
+}
+
 require('lspconfig')['tsserver'].setup{
     on_attach=on_attach,
     filetypes = { "typescript" },

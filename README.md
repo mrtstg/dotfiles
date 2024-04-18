@@ -16,7 +16,7 @@
 
 ## Зависимости
 
-- NodeJS, typescript-language-server, svelte-language-server, pyright
+- NodeJS, typescript-language-server, svelte-language-server, pyright, yaml-language-server
 - Haskell, hindent, HLS
 - #todo
 
