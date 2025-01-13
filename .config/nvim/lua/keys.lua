@@ -25,7 +25,7 @@ vim.api.nvim_set_keymap('n', '<C-s>', ":w<CR>", { noremap = true, silent = true}
 vim.api.nvim_set_keymap('n', '<C-Q>', ":wq<CR>", { noremap = true, silent = true})
 
 -- show errors
-vim.api.nvim_set_keymap('', '<S-e>', ':lua vim.diagnostic.setqflist()<CR>', {})
+vim.api.nvim_set_keymap('', '<C-e>', ':lua vim.diagnostic.setqflist()<CR>', {})
 
 -- disable search highlight
 vim.api.nvim_set_keymap('n', ',<space>', ':nohlsearch<CR>', { noremap = true, silent = true })
