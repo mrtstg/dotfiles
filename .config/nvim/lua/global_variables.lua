@@ -1,6 +1,6 @@
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
-vim.g.python3_host_prog = '~/.pyenv/versions/3.9.18/bin/python3.9'
+vim.g.python3_host_prog = '~/.venv/bin/python3'
 
 -- stylish-haskell options
 vim.g.stylishask_on_save = 1
