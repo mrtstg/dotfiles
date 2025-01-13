@@ -2,7 +2,7 @@ black_on_save_group = vim.api.nvim_create_augroup("black_on_save_group", { clear
 haskell_indent_group = vim.api.nvim_create_augroup("haskell_indent_group", {})
 
 local function launch_black()
-    vim.api.nvim_command ':!black --quiet %'
+    vim.api.nvim_command 'silent! :!black --quiet %'
 end
 
 vim.api.nvim_create_autocmd(
