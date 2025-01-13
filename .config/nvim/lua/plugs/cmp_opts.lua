@@ -2,8 +2,9 @@ local cmp = require'cmp'
 cmp.setup({
   snippet = {
     expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
-    end,
+       local luasnip = require("luasnip")
+       luasnip.lsp_expand(args.body)
+    end
   },
   mapping = {
     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
@@ -15,7 +16,7 @@ cmp.setup({
     ['<C-Up>'] = cmp.mapping.select_prev_item(),
     ['<C-Down>'] = cmp.mapping.select_next_item(),
     ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
+     behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     })
 },
@@ -23,7 +24,7 @@ cmp.setup({
   -- Installed sources
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
+    { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer' },
     { name = 'nvim_lsp_signature_help' },
