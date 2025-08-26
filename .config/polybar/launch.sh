@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 
 # Terminate already running bar instances
-kill $(pidof polybar)
+kill $(pidof polybar) &> /dev/null || true
 
 # Wait until the processes have been shut down
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
