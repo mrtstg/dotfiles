@@ -2,6 +2,17 @@ vim.diagnostic.config({
   virtual_text = false
 })
 
+-- ignoring rust-analyzer diagnostic request cancel error
+for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+    local default_diagnostic_handler = vim.lsp.handlers[method]
+    vim.lsp.handlers[method] = function(err, result, context, config)
+        if err ~= nil and err.code == -32802 then
+            return
+        end
+        return default_diagnostic_handler(err, result, context, config)
+    end
+end
+
 vim.o.updatetime = 500
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
@@ -33,6 +44,11 @@ end
 require('lspconfig')['pyright'].setup{
     on_attach=on_attach,
 }
+
+require("ccls").setup({lsp = {use_defaults = true}})
+--require('lspconfig')['ccls'].setup{
+--    on_attach=on_attach,
+--}
 
 require('lspconfig')['yamlls'].setup {
     on_attach=on_attach,
@@ -75,9 +91,12 @@ rust_opts = {
             checkOnSave = {
                 command = "clippy"
             },
+            diagnostic = {
+                refreshSupport = false
+            }
         }
     },
-    on_attach = on_attach
+    on_attach = on_attach,
 }
 
-require('rust-tools').setup(opts)
+require('rust-tools').setup(rust_opts)
