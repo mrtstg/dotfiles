@@ -222,41 +222,28 @@ return packer.startup(function(use)
     use({
         'tris203/precognition.nvim',
         config = function()
-            require'precognition'.setup()
+            require'precognition'.setup({
+                startVisible = false
+            })
         end
     })
-    --use({
-    --    'yetone/avante.nvim',
-    --    build = 'make BUILD_FROM_SOURCE=true',
-    --    run = 'make',
-    --    lazy = false,
-    --    BUILD_FROM_SOURCE = true,
-    --    requires = { "stevearc/dressing.nvim", "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", "hrsh7th/nvim-cmp", "nvim-tree/nvim-web-devicons", "zbirenbaum/copilot.lua" },
-    --    config = function()
-    --        require("avante_lib").load()
-    --        require'avante'.setup({
-    --            auto_suggestions_provider = 'ollama',
-    --            provider = 'ollama',
-    --            vendors = {
-    --                ollama = {
-    --                    __inherited_from = "openai",
-    --                    api_key_name = "",
-    --                    endpoint = "http://localhost:11434/v1",
-    --                    model = 'qwen2.5-coder:7b',
-    --                }
-    --            },
-    --            behaviour = {
-    --                auto_suggestions = false, -- Experimental stage
-    --                auto_set_highlight_group = true,
-    --                auto_set_keymaps = true,
-    --                auto_apply_diff_after_generation = false,
-    --                support_paste_from_clipboard = false,
-    --                minimize_diff = false,
-    --            },
-    --            hints = { enabled = true }
-    --        })
-    --    end
-    --})
+
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+    -- ccls support
+    use 'ranjithshegde/ccls.nvim'
+
+    use({
+        'folke/trouble.nvim',
+        requires = "nvim-tree/nvim-web-devicons",
+        cmd = 'Trouble',
+        config = function()
+            require'trouble'.setup({
+                auto_close = true,
+                keys = {}
+            })
+        end
+    })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
